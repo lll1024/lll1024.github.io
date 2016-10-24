@@ -100,7 +100,7 @@
 <meta property="og:image" content="http://yoursite.com/images/QQ20161022-2@2x.png">
 <meta property="og:image" content="http://yoursite.com/images/QQ20161022-0@2x.png">
 <meta property="og:image" content="http://yoursite.com/images/QQ20161022-3@2x.png">
-<meta property="og:updated_time" content="2016-10-22T10:23:41.000Z">
+<meta property="og:updated_time" content="2016-10-24T01:28:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="图片拉伸详解">
 <meta name="twitter:description" content="导语：有时候对一个图片进行常规的缩放达不到我们想要的效果，比如聊天气泡的大小、带边框的按钮背景。通常我们会设置某个偏移值对图片进行拉伸来实现我们想要的效果。iOS6以后有两条相似的API可以解决这一问题，下文简称带模式的缩放和不带模式的缩放。
@@ -342,18 +342,18 @@
 </blockquote>
 <p>也就是说，</p>
 <ul>
-<li>如果中间部分边长等于1x1；若出现叠加（上下边距之和大于边长）或小于1的情况也按1算,这种情况下可变部分按照拉伸模式来放大。若中间部分有一边大于1，则大于1的那边按平铺模式缩放，小于1的那边以一个像素的默认偏移值按拉伸模式缩放。</li>
+<li>如果中间部分边长都小于或等于1,这种情况下可变部分从上往下、从左至右按一个像素偏移值按照拉伸模式来放大。若中间部分有一边大于1，则大于1的那边按平铺模式缩放，小于1的那边以一个像素的默认偏移值按拉伸模式缩放。</li>
 <li>如果中间部分边长大于1x1；在这种情况下可变部分按照平铺模式来放大。</li>
 <li>如果中间部分大小等于图片的大小，并且图片大小大于1x1，也就是说传入的参数为<code>UIEdgeInsetsZero</code>,在这种情况下可变部分按照平铺模式来放大。</li>
 </ul>
 <p>下面用一张对称的图片来测试，图片大小是90x90，<code>imageView</code>大小为180x180，上面是测试图下面是原图。</p>
 <p>中间部分大小为0的情况，传入的参数为：<code>UIEdgeInsetsMake(image.size.height*0.5, image.size.width*0.5, image.size.height*0.5, image.size.width*0.5)</code></p>
 <p><img src="/images/QQ20161022-0@2x.png" alt="图1"></p>
-<p>中间部分叠加的情况，传入的参数为：<code>UIEdgeInsetsMake(image.size.height*0.5, image.size.width*0.5, image.size.height*0.5+20, image.size.width*0.5+20)</code></p>
+<p>中间部分叠加(小于0)的情况，传入的参数为：<code>UIEdgeInsetsMake(image.size.height*0.5, image.size.width*0.5, image.size.height*0.5+20, image.size.width*0.5+20)</code></p>
 <p><img src="/images/QQ20161022-0@2x.png" alt="图2"></p>
-<p>中间部分小于<code>1*1</code>的情况，传入的参数为：<code>UIEdgeInsetsMake(image.size.height*0.5, image.size.width*0.5, image.size.height*0.5-0.5, image.size.width*0.5-0.5)</code></p>
+<p>中间部分边长均小于1的情况，传入的参数为：<code>UIEdgeInsetsMake(image.size.height*0.5, image.size.width*0.5, image.size.height*0.5-0.5, image.size.width*0.5-0.5)</code></p>
 <p><img src="/images/QQ20161022-0@2x.png" alt="图2"></p>
-<p>中间部分大于<code>1*1</code>的情况，传入的参数为：<code>UIEdgeInsetsMake(image.size.height*0.3, image.size.width*0.3, image.size.height*0.3, image.size.width*0.3)</code></p>
+<p>中间部分边长均大于1的情况，传入的参数为：<code>UIEdgeInsetsMake(image.size.height*0.3, image.size.width*0.3, image.size.height*0.3, image.size.width*0.3)</code></p>
 <p><img src="/images/QQ20161022-1@2x.png" alt="图2"></p>
 <p>中间部分等于图片大小的情况，传入的参数为：<code>UIEdgeInsetsZero</code></p>
 <p><img src="/images/QQ20161022-2@2x.png" alt="图2"></p>
