@@ -101,7 +101,7 @@
 <meta property="og:image" content="http://yoursite.com/images/QQ20161022-2@2x.png">
 <meta property="og:image" content="http://yoursite.com/images/QQ20161022-0@2x.png">
 <meta property="og:image" content="http://yoursite.com/images/QQ20161022-3@2x.png">
-<meta property="og:updated_time" content="2016-10-24T07:47:14.000Z">
+<meta property="og:updated_time" content="2016-10-25T03:38:16.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="图片拉伸详解">
 <meta name="twitter:description" content="导语：有时候对一个图片进行常规的缩放达不到我们想要的效果，比如聊天气泡的大小、带边框的按钮背景。通常我们会设置某个偏移值对图片进行拉伸来实现我们想要的效果。iOS6以后有两条相似的API可以解决这一问题，下文简称带模式的缩放和不带模式的缩放。
@@ -368,7 +368,7 @@
 <p><img src="/images/QQ20161022-0@2x.png" alt="图1"></p>
 <p>平铺模式，传入的参数为：<code>UIEdgeInsetsMake(image.size.height*0.3, image.size.width*0.3, image.size.height*0.5, image.size.width*0.3)</code></p>
 <p><img src="/images/QQ20161022-3@2x.png" alt="图2"></p>
-<p>这两种方法都不会改变原图，而是返回一张新的图片。其实在像素为1的情况下也看不出是平铺模式还是拉伸模式，如果是纯色背景两种模式区别也不大。anyway，知道总比不知道要强。</p>
+<p>这两种方法都不会改变原图，而是返回一张新的图片。其实在像素为1的情况下也看不出是平铺模式还是拉伸模式(性能上拉伸模式好得多)，如果是纯色背景两种模式区别也不大。anyway，知道总比不知道要强。</p>
 
       
     </div>
