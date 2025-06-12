@@ -1,5 +1,5 @@
 .site-title {
-  font-size: 40px;
+  font-size: 80px;
   font-weight: bold;
 }
 .site-subtitle {
@@ -1228,7 +1228,7 @@ pre code {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #41ffff;
+  background: #041b90;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
