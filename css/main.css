@@ -1,3 +1,11 @@
+.site-title {
+  font-size: 40px;
+  font-weight: bold;
+}
+.site-subtitle {
+  font-size: 20px;
+  color: #888;
+}
 :root {
   --body-bg-color: #fff;
   --content-bg-color: #f5f5f5;
@@ -1220,7 +1228,7 @@ pre code {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #d7e39f;
+  background: #41ffff;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
