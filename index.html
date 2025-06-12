@@ -134,7 +134,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">1</span>
+          <span class="site-state-item-count">3</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -156,6 +156,236 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/06/12/CRSFashion-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="L">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Magic House">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | Magic House">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/06/12/CRSFashion-1/" class="post-title-link" itemprop="url">CRSFashion</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2025-06-12 17:45:30" itemprop="dateCreated datePublished" datetime="2025-06-12T17:45:30+08:00">2025-06-12</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/06/12/CRSFashion/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="L">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Magic House">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | Magic House">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/06/12/CRSFashion/" class="post-title-link" itemprop="url">Untitled</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2025-06-12 17:38:21 / Modified: 17:43:19" itemprop="dateCreated datePublished" datetime="2025-06-12T17:38:21+08:00">2025-06-12</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1>CRSFashion: Capturing Rich Structured Attributes with Multiple
+Views for Vision-Language Fashion</h1>
+<p><em>在电商平台如何让AI精准理解时尚产品的多维度属性（如材质、版型、搭配）是行业核心挑战。传统方法常忽略文本描述中隐含的丰富结构化知识，导致模型对商品的理解流于表面。为此，我们提出CRSFashion——首个融合结构化属性建模与多视图视觉特征的端到端解决方案，显著提升时尚多模态任务性能。</em></p>
+![Figure1](assets/Figure1.png)
+
+
+
+<h2>🌟 核心问题</h2>
+<p>现有时尚视觉-语言模型存在两大局限：</p>
+<ul>
+  <li>❌ <strong>忽略结构化属性</strong>：文本描述中的类型、颜色、材质等属性未被显式建模</li>
+  <li>❌ <strong>单一视觉视图</strong>：仅使用单品视图，忽视搭配需要关注整体风格</li>
+</ul>
+
+<h2>✨ 创新方案：CRSFashion</h2>
+<h3>1. 结构化属性建模</h3>
+<p>将时尚属性归纳为6类语义模式：</p>
+<!-- 表1占位符 -->
+<div style="border:1px dashed #ccc; padding:20px; text-align:center;">
+  [表1：五类基础属性+一类嵌套属性示例]
+  <br>例：<code>颜色: 米白</code> (概念:对象) | <code>材质: 棉,尼龙</code> (概念:对象组)
+</div>
+
+<h3>2. 属性表示模板</h3>
+<pre>#INSTRUCTION
+&lt;name&gt;产品名称&lt;/name&gt;
+&lt;description&gt;
+  颜色: 红 $SEP 材质: 棉 $SEP 防水: 是
+&lt;/description&gt;</pre>
+<p>符号化标注使语义更清晰，适配大模型指令微调</p>
+
+<h3>3. 多视图视觉对齐</h3>
+<p>同时建模两类视图：</p>
+<ul>
+  <li>📸 <strong>单品多角度视图</strong>（1-11张/商品）</li>
+  <li>👗 <strong>搭配视图</strong>（关联商品组成穿搭方案）</li>
+</ul>
+<!-- 图3占位符 -->
+<div style="border:1px dashed #ccc; height:200px; margin:10px 0; text-align:center;">
+  [图3：数据集多视角图像数量分布]
+</div>
+
+<h2>🔧 数据集构建流水线</h2>
+<!-- 图2占位符 -->
+<div style="border:1px dashed #ccc; height:300px; margin:10px 0; text-align:center;">
+  [图2：CRSFashion流水线架构图]
+</div>
+<ol>
+  <li><strong>数据采集</strong>：从SSENSE等平台获取132,159件商品原始数据</li>
+  <li><strong>属性三重提取</strong>：
+    <pre>GPT-3.5 → DeepSeek-V3 → GPT-4o 三级LLM协同标注</pre>
+  </li>
+  <li><strong>多视图分离</strong>：人工划分单品视图与搭配视图图像</li>
+</ol>
+
+<h2>📊 数据集关键指标</h2>
+<!-- 表2占位符 -->
+<div style="border:1px dashed #ccc; padding:10px; margin:10px 0;">
+  [表2：数据集对比 | CRSFashion优势]
+  <ul>
+    <li>✅ 132K商品 | 528K图像</li>
+    <li>✅ 12+结构化属性 | 1-11视图/商品</li>
+    <li>✅ 首次包含搭配视图</li>
+  </ul>
+</div>
+
+<h2>🚀 实验效果</h2>
+<h3>1. 跨模态检索任务</h3>
+<!-- 表3占位符 -->
+<div style="border:1px dashed #ccc; padding:15px; margin:10px 0;">
+  [表3：检索任务R@1结果对比]
+  <br><strong>CRSFashion<sub>structured</sub></strong> 显著提升：
+  <br>• Image→Text: +3.1% | Text→Image: +2.8%
+</div>
+
+<h3>2. 搭配兼容性预测</h3>
+<!-- 表6占位符 -->
+<div style="border:1px dashed #ccc; padding:15px; margin:10px 0;">
+  [表6：搭配任务准确率]
+  <br>结构化属性使准确率提升<strong>8.32%</strong> (73.15% → 81.47%)
+</div>
+
+<h2>💡 应用价值</h2>
+<ul>
+  <li>🛒 <strong>电商场景</strong>：提升跨模态搜索与个性化推荐精度</li>
+  <li>👗 <strong>虚拟试穿</strong>：基于结构化属性生成精细化穿搭方案</li>
+  <li>🎨 <strong>设计辅助</strong>：多视图数据助力时尚元素解构分析</li>
+</ul>
+
+<blockquote>
+  <p>论文资源：<br>
+  • 数据集：CC BY-NC-SA 4.0协议开源<br>
+  • 代码：GitHub仓库即将发布</p>
+</blockquote>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -195,7 +425,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2025-06-12 15:07:25 / Modified: 16:47:27" itemprop="dateCreated datePublished" datetime="2025-06-12T15:07:25+08:00">2025-06-12</time>
+      <time title="Created: 2025-06-12 15:07:25 / Modified: 17:35:48" itemprop="dateCreated datePublished" datetime="2025-06-12T15:07:25+08:00">2025-06-12</time>
     </span>
 
   
@@ -208,23 +438,101 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>在电商平台如何让AI精准理解时尚产品的多维度属性（如材质、版型、搭配）是行业核心挑战。传统方法常忽略文本描述中隐含的丰富结构化知识，导致模型对商品的理解流于表面。为此，我们提出CRSFashion——首个融合结构化属性建模与多视图视觉特征的端到端解决方案，显著提升时尚多模态任务性能。</p>
-<p>现有时尚视觉语言模型存在两大局限：</p>
-<p>文本侧：商品描述中的属性（如“颜色：米白”“防水：是”）未被结构化解析，模型难以区分语义类型（概念型&#x2F;数值型&#x2F;二元特征等）。</p>
-<p>视觉侧：单一商品图缺乏多角度视图（如正面&#x2F;细节&#x2F;上身效果），且忽略搭配视图（outfit）的上下文信息。</p>
-<p>CRSFashion三大创新</p>
-<ol>
-<li>结构化属性建模框架<br>属性语义分类：将商品描述中的属性归纳为6种类型（5种基础+1种嵌套），构建统一表示模板：</li>
-</ol>
-<p>plaintext<br>#INSTRUCTION<br><name>商品名称</name><br><description><br>  颜色: 米白 | 材质: 棉,尼龙 | 宽度: 1.2英寸 | 防水: 是…<br></description><br>大模型赋能的标注流程：通过三层LLM接力（GPT-3.5 → DeepSeek-V3 → GPT-4o）自动提取结构化属性，减少人工成本（流程见图2）。</p>
-<ol start="3">
-<li>高质量数据集CRSFashion<br>规模：132,159商品、528,534张图像（当前最大多视图数据集）。</li>
-</ol>
-<p>标注深度：12+类结构化属性 + 3级品类体系 + 性别专属分类（见图4）。</p>
-<p>独特价值：首份支持单商品任务（检索&#x2F;分类）与搭配任务（兼容性预测）的通用基准（对比见表2）。</p>
-<p>实验结果：全任务性能提升<br>在三大任务上验证方法有效性（模型&#x2F;数据均开源）：</p>
-<p>任务	基线最佳方法	CRSFashion (结构化)	提升幅度<br>跨模态检索 (R@1)	FashionSAP	59.69%	+1.06%<br>品类识别 (Acc)	ALBEF	92.90%	+0.88%<br>搭配兼容性 (AUC)	Polyvore	89.82	+10.05%<br>💡 关键发现：结构化属性在VLLM（如DeepSeek-VL）上的增益更显著，证明其对大模型知识注入的有效性。</p>
+          <h1>CRSFashion: Capturing Rich Structured Attributes with Multiple
+Views for Vision-Language Fashion</h1>
+<p><em>在电商平台如何让AI精准理解时尚产品的多维度属性（如材质、版型、搭配）是行业核心挑战。传统方法常忽略文本描述中隐含的丰富结构化知识，导致模型对商品的理解流于表面。为此，我们提出CRSFashion——首个融合结构化属性建模与多视图视觉特征的端到端解决方案，显著提升时尚多模态任务性能。</em></p>
+![Figure 1: Sample with textual description and rich structured
+attributes from the CRSFashion dataset. The sample is also
+shown by multiple views and an outfit view.](Figure1.png)
 
+
+<h2>🌟 核心问题</h2>
+<p>现有时尚视觉-语言模型存在两大局限：</p>
+<ul>
+  <li>❌ <strong>忽略结构化属性</strong>：文本描述中的类型、颜色、材质等属性未被显式建模</li>
+  <li>❌ <strong>单一视觉视图</strong>：仅使用单品视图，忽视搭配需要关注整体风格</li>
+</ul>
+
+<h2>✨ 创新方案：CRSFashion</h2>
+<h3>1. 结构化属性建模</h3>
+<p>将时尚属性归纳为6类语义模式：</p>
+<!-- 表1占位符 -->
+<div style="border:1px dashed #ccc; padding:20px; text-align:center;">
+  [表1：五类基础属性+一类嵌套属性示例]
+  <br>例：<code>颜色: 米白</code> (概念:对象) | <code>材质: 棉,尼龙</code> (概念:对象组)
+</div>
+
+<h3>2. 属性表示模板</h3>
+<pre>#INSTRUCTION
+&lt;name&gt;产品名称&lt;/name&gt;
+&lt;description&gt;
+  颜色: 红 $SEP 材质: 棉 $SEP 防水: 是
+&lt;/description&gt;</pre>
+<p>符号化标注使语义更清晰，适配大模型指令微调</p>
+
+<h3>3. 多视图视觉对齐</h3>
+<p>同时建模两类视图：</p>
+<ul>
+  <li>📸 <strong>单品多角度视图</strong>（1-11张/商品）</li>
+  <li>👗 <strong>搭配视图</strong>（关联商品组成穿搭方案）</li>
+</ul>
+<!-- 图3占位符 -->
+<div style="border:1px dashed #ccc; height:200px; margin:10px 0; text-align:center;">
+  [图3：数据集多视角图像数量分布]
+</div>
+
+<h2>🔧 数据集构建流水线</h2>
+<!-- 图2占位符 -->
+<div style="border:1px dashed #ccc; height:300px; margin:10px 0; text-align:center;">
+  [图2：CRSFashion流水线架构图]
+</div>
+<ol>
+  <li><strong>数据采集</strong>：从SSENSE等平台获取132,159件商品原始数据</li>
+  <li><strong>属性三重提取</strong>：
+    <pre>GPT-3.5 → DeepSeek-V3 → GPT-4o 三级LLM协同标注</pre>
+  </li>
+  <li><strong>多视图分离</strong>：人工划分单品视图与搭配视图图像</li>
+</ol>
+
+<h2>📊 数据集关键指标</h2>
+<!-- 表2占位符 -->
+<div style="border:1px dashed #ccc; padding:10px; margin:10px 0;">
+  [表2：数据集对比 | CRSFashion优势]
+  <ul>
+    <li>✅ 132K商品 | 528K图像</li>
+    <li>✅ 12+结构化属性 | 1-11视图/商品</li>
+    <li>✅ 首次包含搭配视图</li>
+  </ul>
+</div>
+
+<h2>🚀 实验效果</h2>
+<h3>1. 跨模态检索任务</h3>
+<!-- 表3占位符 -->
+<div style="border:1px dashed #ccc; padding:15px; margin:10px 0;">
+  [表3：检索任务R@1结果对比]
+  <br><strong>CRSFashion<sub>structured</sub></strong> 显著提升：
+  <br>• Image→Text: +3.1% | Text→Image: +2.8%
+</div>
+
+<h3>2. 搭配兼容性预测</h3>
+<!-- 表6占位符 -->
+<div style="border:1px dashed #ccc; padding:15px; margin:10px 0;">
+  [表6：搭配任务准确率]
+  <br>结构化属性使准确率提升<strong>8.32%</strong> (73.15% → 81.47%)
+</div>
+
+<h2>💡 应用价值</h2>
+<ul>
+  <li>🛒 <strong>电商场景</strong>：提升跨模态搜索与个性化推荐精度</li>
+  <li>👗 <strong>虚拟试穿</strong>：基于结构化属性生成精细化穿搭方案</li>
+  <li>🎨 <strong>设计辅助</strong>：多视图数据助力时尚元素解构分析</li>
+</ul>
+
+<blockquote>
+  <p>论文资源：<br>
+  • 数据集：CC BY-NC-SA 4.0协议开源<br>
+  • 代码：GitHub仓库即将发布</p>
+</blockquote>
       
     </div>
 
