@@ -41,7 +41,7 @@
 <meta property="og:image" content="https://jarviliu.github.io/2025/06/12/CRSFashion/Table5.png">
 <meta property="og:image" content="https://jarviliu.github.io/2025/06/12/CRSFashion/Table6.png">
 <meta property="article:published_time" content="2025-06-12T11:36:11.000Z">
-<meta property="article:modified_time" content="2025-06-13T11:14:07.557Z">
+<meta property="article:modified_time" content="2025-06-13T11:18:27.825Z">
 <meta property="article:author" content="L">
 <meta property="article:tag" content="Paper">
 <meta name="twitter:card" content="summary">
@@ -223,7 +223,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-06-13 19:14:07" itemprop="dateModified" datetime="2025-06-13T19:14:07+08:00">2025-06-13</time>
+      <time title="Modified: 2025-06-13 19:18:27" itemprop="dateModified" datetime="2025-06-13T19:18:27+08:00">2025-06-13</time>
     </span>
 
   
@@ -258,7 +258,7 @@
 <h3 id="第一阶段：数据采集"><a href="#第一阶段：数据采集" class="headerlink" title="第一阶段：数据采集"></a>第一阶段：数据采集</h3><p>CRSFashion 的数据采集与清洗流程围绕 SSENSE 电商平台展开，旨在构建一个涵盖多视角图像与结构化文本信息的高质量多模态时尚数据集。首先，通过自动化脚本从商品详情页抓取原始图像和文本信息，包括主图、细节图、侧视图以及搭配图等多个视角，同时同步获取商品名称、描述、价格、材质等文本字段。原始XML文件会被直接存储至云端，确保其不可变性，便于后续任务的重跑和版本追踪。<br>在数据清洗阶段，对原始内容进行去重、纠错与异常过滤，处理图像缺失、文本乱码、字段缺省等常见问题。特别是对重复商品、模糊图像、无关搭配图等噪声数据进行了剔除。此外，为保证图文内容的结构统一性，还对文本字段进行了标准化处理，例如对品牌与品类字段进行规范映射，并通过人工辅助审核机制进一步提升数据的一致性与准确性。该阶段为后续的属性建模、多模态融合等任务奠定了坚实的数据基础。</p>
 <h3 id="第二阶段：结构化属性抽取"><a href="#第二阶段：结构化属性抽取" class="headerlink" title="第二阶段：结构化属性抽取"></a>第二阶段：结构化属性抽取</h3><p>在 CRSFashion 的结构化属性抽取流程中，我们充分发挥大语言模型（LLM）在理解与生成结构化信息方面的能力，设计了一套“指令驱动 + 多轮推理”的属性抽取机制，以实现高质量的图文属性建构。<br>首先，我们使用 基于模式匹配的预处理方式，从商品文本中直接提取一些显性属性，如性别、服装类型等。这些属性在电商文本中通常具有稳定格式，因此可以通过关键词匹配和正则表达式规则高效提取，并作为结构化建模的初始输入。<br>接下来，CRSFashion 构建了三轮基于 LLM 的结构化属性抽取流程。在第一轮中，我们针对原始商品描述文本（$DESCRIPTION）构建统一的提示模板，分别输入至两个语言模型（gpt-o3-mini 和 DeepSeek-V3）。这些模板旨在引导模型从非结构化描述中识别出颜色、材质、版型、细节等属性，并以预定义格式返回。该阶段的目标是生成 两个候选的结构化属性集合，分别来自两个模型的独立推理结果。通过这种“双通道”设置，我们可以最大程度减少单一模型误判所带来的风险，同时获得更全面、互补的属性视图。如图所示：</p>
 <p><img src="/2025/06/12/CRSFashion/Listing2.png" alt="Listing2"><br><em><center style="line-height:1.3;font-size:0.92em;padding:0 10%;">Instructions for extracting attributes to large language models.</center></em></p>
-<p>在结构化属性抽取流程的最后一步中，CRSFashion 进一步引入更强大的大语言模型 —— GPT-4o，以提升属性抽取的准确性与一致性。<br>具体来说，在前一阶段，系统已通过两个不同的 LLM（如 gpt-o3-mini 与 DeepSeek-V3）生成了两个候选的结构化属性版本。这两个版本虽然各自具备一定的语义覆盖和格式化能力，但在细节、用词、属性归类等方面可能存在差异。<br>为此，CRSFashion 设计了一条指令模板，将两个候选版本作为输入，通过调用 GPT-4o 对其进行融合与重构。在该指令中：STRUCTURED_ATTRIBUTES_1 和 STRUCTURED_ATTRIBUTES_2 分别表示来自前两步的候选属性结果；GPT-4o 被要求参考两个输入版本的内容，进行合理的判断、归纳与抽象，生成最终的结构化属性。</p>
+<p>在结构化属性抽取流程的最后一步中，CRSFashion 进一步引入更强大的大语言模型 —— GPT-4o，以提升属性抽取的准确性与一致性。<br>具体来说，在前一阶段，系统已通过两个不同的 LLM（如 gpt-o3-mini 与 DeepSeek-V3）生成了两个候选的结构化属性版本。这两个版本虽然各自具备一定的语义覆盖和格式化能力，但在细节、用词、属性归类等方面可能存在差异。<br>为此，CRSFashion 设计了一条指令模板，将两个候选版本作为输入，通过调用 GPT-4o 对其进行融合与重构。在该指令中：STRUCTURED_ATTRIBUTES_1 和 STRUCTURED_ATTRIBUTES_2 分别表示来自前两步的候选属性结果；GPT-4o 需要参考这两个候选属性，进行合理的判断、归纳与抽象，生成最终的结构化属性。</p>
 <p><img src="/2025/06/12/CRSFashion/Listing3.png" alt="Listing3"><br><em><center style="line-height:1.3;font-size:0.92em;padding:0 10%;">Instructions for structure attributes fusion to large language models.</center></em></p>
 <p>这一过程相当于在多个语言模型之间构建共识，借助 GPT-4o 强大的推理能力与语言理解能力，整合前两步的结果，进一步注入时尚领域的知识，提升抽取结果的完整性、准确性与结构规范性。最终生成的结构化属性更加精炼、稳定，并能更好地服务于后续的多模态建模任务。</p>
 <h3 id="第三阶段：多视角与搭配图像的结构化分组"><a href="#第三阶段：多视角与搭配图像的结构化分组" class="headerlink" title="第三阶段：多视角与搭配图像的结构化分组"></a>第三阶段：多视角与搭配图像的结构化分组</h3><p>在多视角图像提取阶段（Multi-views Extraction）中，CRSFashion 为了更精准地建模服装的视觉语义，对原始图像数据进行了手工分组与划分，以确保多模态信息的结构清晰、语义明确。<br>具体而言，研究人员首先针对每个商品采集到的一组图像进行整理，将其划分为两个部分：</p>
