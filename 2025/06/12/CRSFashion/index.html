@@ -41,7 +41,7 @@
 <meta property="og:image" content="https://jarviliu.github.io/2025/06/12/CRSFashion/Table5.png">
 <meta property="og:image" content="https://jarviliu.github.io/2025/06/12/CRSFashion/Table6.png">
 <meta property="article:published_time" content="2025-06-12T11:36:11.000Z">
-<meta property="article:modified_time" content="2025-06-13T11:18:27.825Z">
+<meta property="article:modified_time" content="2025-06-13T11:26:05.666Z">
 <meta property="article:author" content="L">
 <meta property="article:tag" content="Paper">
 <meta name="twitter:card" content="summary">
@@ -223,7 +223,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-06-13 19:18:27" itemprop="dateModified" datetime="2025-06-13T19:18:27+08:00">2025-06-13</time>
+      <time title="Modified: 2025-06-13 19:26:05" itemprop="dateModified" datetime="2025-06-13T19:26:05+08:00">2025-06-13</time>
     </span>
 
   
@@ -270,7 +270,7 @@
 <h3 id="第四阶段：联合校验"><a href="#第四阶段：联合校验" class="headerlink" title="第四阶段：联合校验"></a>第四阶段：联合校验</h3><p>结合自动校验与人工复核，确保提取结果的准确性与一致性。</p>
 <h2 id="数据集分析与统计"><a href="#数据集分析与统计" class="headerlink" title="数据集分析与统计"></a>数据集分析与统计</h2><p>CRSFashion 旨在为服装属性理解与搭配建模等下游任务提供高质量的数据支持。该数据集共包含 132159 件时尚单品，对应 528534 张高质量图像，图像分辨率为 960 × 640，并计划后续发布更高分辨率版本以供研究使用。图像类型包括主视图、细节图以及搭配图，构成多视角视觉输入。<br>在属性设计方面，每个商品均标注了 12 个基础属性，并进一步通过结构化方式标注了细粒度的时尚语义属性。与现有数据集相比，CRSFashion 独特地引入了如设计师信息、搭配图、搭配商品以及三级类目体系等信息，以构建更具表达力的多模态输入。<br>为了增强模型对性别语境下时尚属性的理解，CRSFashion 特别设计了 基于性别的类目体系，共计包含 184 个品类，下图展示了前 30 个高频类别的分布情况。此外，数据集中还补充了 11,062 件与生活场景相关的时尚产品，以增强类目的多样性与泛化能力。</p>
 <p><img src="/2025/06/12/CRSFashion/Figure4.png" alt="Figure4"><br><em><center style="line-height:1.3;font-size:0.92em;padding:0 10%;">The distribution of the number of categories in the CRSFashion dataset.</center></em></p>
-<p>在数据划分上，CRSFashion 采用标准的 8:1:1 的训练、验证与测试划分比例，确保任务评估的一致性与可复现性。每个样本均包含结构化的属性标注与图像信息，覆盖多视角、多语义的丰富时尚内容，适用于包括图文匹配、多标签分类、搭配推荐等多种研究任务。<br>为了进一步支持搭配推荐等服装组合类任务，我们从原始的 CRSFashion 数据集中提取了搭配视角相关的样本，构建了 CRSFashion-outfit 子集。该数据集基于已有的搭配商品（outfit products）字段构建，最终包含 92,816 组搭配样本。相较于现有的 outfit 类任务数据集，CRSFashion-outfit 的优势在于：每一件参与搭配的单品不仅具备 完整的结构化属性信息（包括 12 个基础属性与语义属性），还具备主图、多视图和搭配图等多模态视觉输入，如图所示：</p>
+<p>在数据划分上，CRSFashion 采用标准的 8:1:1 的训练、验证与测试划分比例，确保任务评估的一致性与可复现性。每个样本均包含结构化的属性标注与图像信息，覆盖多视角、多语义的丰富时尚内容，适用于包括图文匹配、多标签分类、搭配推荐等多种研究任务。<br>为了进一步支持搭配推荐等服装组合类任务，我们从原始的 CRSFashion 数据集中提取了搭配视角相关的样本，构建了 CRSFashion-outfit 子集。该数据集基于已有的搭配商品（outfit products）字段构建，最终包含 92816 组搭配样本。相较于现有的 outfit 类任务数据集，CRSFashion-outfit 的优势在于：每一件参与搭配的单品不仅具备 完整的结构化属性信息（包括 12 个基础属性与语义属性），还具备主图、多视图和搭配图等多模态视觉输入，如图所示：</p>
 <p><img src="/2025/06/12/CRSFashion/Table2.png" alt="Table2"><em><center style="line-height:1.3;font-size:0.92em;padding:0 10%;">Comparison with previous fashion datasets.</center></em></p>
 <p>在评估任务设计上，我们参考主流 outfit fashion 工作的数据构建方式，构建了针对 outfit 推荐与理解任务的评估基准。数据集被划分为训练集、验证集与测试集，遵循 8:1:1 的标准比例，以保障任务评估的一致性与公平性。<br>为更直观地展示 CRSFashion 数据集的特性，我们从中选取了三个具有代表性的样例，如图 5 所示。每个样例展示了该商品的 基础属性 与 结构化属性，以及其多视角图像输入。可以明显看到，属性信息层次清晰、语义明确，多视角图像也有助于丰富视觉理解，体现了本数据集在服装语义建模与多模态理解方面的显著优势。</p>
 <p><img src="/2025/06/12/CRSFashion/Figure5.png" alt="Figure5"><br><em><center style="line-height:1.3;font-size:0.92em;padding:0 10%;">Structured attribute examples and image views for selected items.</center></em></p>
