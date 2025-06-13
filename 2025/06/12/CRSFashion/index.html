@@ -41,7 +41,7 @@
 <meta property="og:image" content="https://jarviliu.github.io/2025/06/12/CRSFashion/Table5.png">
 <meta property="og:image" content="https://jarviliu.github.io/2025/06/12/CRSFashion/Table6.png">
 <meta property="article:published_time" content="2025-06-12T11:36:11.000Z">
-<meta property="article:modified_time" content="2025-06-13T11:07:38.421Z">
+<meta property="article:modified_time" content="2025-06-13T11:14:07.557Z">
 <meta property="article:author" content="L">
 <meta property="article:tag" content="Paper">
 <meta name="twitter:card" content="summary">
@@ -223,7 +223,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-06-13 19:07:38" itemprop="dateModified" datetime="2025-06-13T19:07:38+08:00">2025-06-13</time>
+      <time title="Modified: 2025-06-13 19:14:07" itemprop="dateModified" datetime="2025-06-13T19:14:07+08:00">2025-06-13</time>
     </span>
 
   
@@ -308,8 +308,9 @@
 <h3 id="搭配兼容性评估"><a href="#搭配兼容性评估" class="headerlink" title="搭配兼容性评估"></a>搭配兼容性评估</h3><p>为了进一步验证 CRSFashion 在服装搭配任务中的适用性，我们在多模态搭配任务 Outfit Compatibility（OC） 上进行实验评估。该任务的目标是判断一组给定的服饰单品是否在视觉与语义上构成“协调搭配”，即是否属于一种“兼容”的穿搭组合。<br>本实验基于我们提出的 CRSFashion-outfit benchmark 数据集进行。为了更全面地评估模型的泛化能力，我们从数据集中构建了两个子集：</p>
 <ul>
 <li>Overlap 子集：训练集、验证集和测试集之间的产品存在重叠，适合评估模型在已知风格上的拟合能力；</li>
-<li>Disjoint 子集：训练集、验证集和测试集中的产品完全不重叠，用于更严格地评估模型对结构化属性与搭配逻辑的泛化能力。<br>我们对比实验中采用了基线方法 FashionSAP，并对其进行修改，使其支持多模态搭配输入。此外，我们进一步引入结构化属性，并根据 Listing 1 所示的指令格式对输入内容进行统一处理。<br>实验结果如下表所示。我们重点报告了在 Disjoint 子集上的结果，以评估模型在“从未见过的单品”上的搭配能力表现。实验表明，引入结构化属性显著提升了搭配兼容性识别的准确性，这不仅验证了 CRSFashion 方法的有效性，也为未来多模态服饰搭配建模提供了一个新基线。</li>
+<li>Disjoint 子集：训练集、验证集和测试集中的产品完全不重叠，用于更严格地评估模型对结构化属性与搭配逻辑的泛化能力。</li>
 </ul>
+<p>我们对比实验中采用了基线方法 FashionSAP，并对其进行修改，使其支持多模态搭配输入。此外，我们进一步引入结构化属性，并根据 Listing 1 所示的指令格式对输入内容进行统一处理。<br>实验结果如下表所示。我们重点报告了在 Disjoint 子集上的结果，以评估模型在“从未见过的单品”上的搭配能力表现。实验表明，引入结构化属性显著提升了搭配兼容性识别的准确性，这不仅验证了 CRSFashion 方法的有效性，也为未来多模态服饰搭配建模提供了一个新基线。</p>
 <p><img src="/2025/06/12/CRSFashion/Table6.png" alt="Table6"></p>
 <p>该实验进一步证明：结构化的语义注入和多视角设计能显著提升多模态模型在复杂搭配任务中的理解与判断能力。</p>
 
