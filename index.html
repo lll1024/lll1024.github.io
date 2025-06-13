@@ -201,7 +201,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-06-13 14:26:50" itemprop="dateModified" datetime="2025-06-13T14:26:50+08:00">2025-06-13</time>
+      <time title="Modified: 2025-06-13 14:32:56" itemprop="dateModified" datetime="2025-06-13T14:32:56+08:00">2025-06-13</time>
     </span>
 
   
@@ -216,134 +216,67 @@
     <div class="post-body" itemprop="articleBody">
           <h1>CRSFashion: Capturing Rich Structured Attributes with Multiple Views for Vision-Language Fashion</h1>
 
-<p><em>如何让 AI 准确理解时尚产品的多维度属性（如材质、版型、搭配）是电商平台面临的核心挑战。现有方法常忽视文本描述中隐含的结构化信息，导致模型在细节理解和语义建模方面存在不足。为此，我们提出 CRSFashion——首个融合结构化属性建模与多视图视觉特征的端到端解决方案，显著提升多模态模型在时尚场景中的表现。</em></p>
+<p><em>在电商平台，如何让 AI 精准理解时尚产品的多维度属性（如材质、版型、搭配）是行业核心挑战。传统方法常忽略文本描述中隐含的结构化语义，难以充分建模商品的丰富信息。为此，我们提出 CRSFashion——一个融合结构化属性与多视角信息的多模态数据集与基准方法框架，显著提升 AI 对时尚内容的理解能力。</em></p>
 
-<figure>
-  <img src="Figure1.png" alt="Figure1" style="display: block; margin: 0 auto; width: 90%;">
-  <figcaption style="text-align: center; line-height: 1.4; font-size: 0.92em;">
-    图 1：CRSFashion 样例展示，包含文本描述、结构化属性、多个视角和搭配视图，体现了真实场景中图文多模态融合的复杂性。
-  </figcaption>
-</figure>
+<center><img src="Figure1.png" width="90%"></center>  
+*<center>Figure 1: Sample with textual description and rich structured attributes from the CRSFashion dataset. The sample is also shown by multiple views and an outfit view.</center>*
 
-<h2 id="核心问题分析"><a href="#核心问题分析" class="headerlink" title="核心问题分析"></a>核心问题分析</h2><p>当前时尚视觉语言模型存在以下两方面主要不足：</p>
-
+<h2 id="Key-Challenges-in-Fashion-Understanding"><a href="#Key-Challenges-in-Fashion-Understanding" class="headerlink" title="Key Challenges in Fashion Understanding"></a>Key Challenges in Fashion Understanding</h2><p>现有视觉语言模型在时尚场景下主要存在两方面问题：</p>
 <ul>
-  <li><strong>缺乏结构化属性建模：</strong>文本中常包含颜色、材质、版型等重要属性信息，但未被显式解析并利用。</li>
-  <li><strong>视觉信息单一：</strong>仅依赖单一商品主图，忽视商品在多角度及搭配场景中的表现，导致兼容性建模能力受限。</li>
+<li><strong>结构化语义缺失</strong>：商品描述中隐含丰富的颜色、材质、版型等属性，但模型无法显式感知。</li>
+<li><strong>视图表达不足</strong>：依赖单一主图难以捕捉商品多角度特征与搭配上下文。</li>
 </ul>
+<h2 id="CRSFashion-方法概述"><a href="#CRSFashion-方法概述" class="headerlink" title="CRSFashion 方法概述"></a>CRSFashion 方法概述</h2><p>我们从结构建模和视觉对齐两个方向切入，设计三大关键机制：</p>
+<h3 id="1-结构化属性建模"><a href="#1-结构化属性建模" class="headerlink" title="1. 结构化属性建模"></a>1. 结构化属性建模</h3><p>将文本与图像中的信息解析为六类结构化属性，包括颜色、材质、图案、风格、剪裁等，支持对商品进行更精细的语义建模。</p>
+<center><img src="assets/Table1.png" width="90%"></center>  
+*<center>Table 1: Definition of structured attributes for fashion items.</center>*
 
-<h2 id="创新方案：CRSFashion-方法框架"><a href="#创新方案：CRSFashion-方法框架" class="headerlink" title="创新方案：CRSFashion 方法框架"></a>创新方案：CRSFashion 方法框架</h2><h3 id="1-结构化属性建模"><a href="#1-结构化属性建模" class="headerlink" title="1. 结构化属性建模"></a>1. 结构化属性建模</h3><p>我们将时尚领域属性抽象为六大语义类别，覆盖颜色、材质、版型等基础信息及嵌套属性（如风格、搭配方式）。该语义体系为模型提供清晰的属性边界，有助于学习多维时尚语义。</p>
+<h3 id="2-属性融合指令模板设计"><a href="#2-属性融合指令模板设计" class="headerlink" title="2. 属性融合指令模板设计"></a>2. 属性融合指令模板设计</h3><p>借助大语言模型，我们设计模板引导模型融合图文信息并输出结构化属性，示例如下：</p>
+<center><img src="assets/Listing1.png" width="90%"></center>  
+*<center>Listing 1: Instruction template used for structured attribute extraction.</center>*
 
-<figure>
-  <img src="Table1.png" alt="Table1" style="display: block; margin: 0 auto; width: 90%;">
-  <figcaption style="text-align: center; line-height: 1.4; font-size: 0.92em;">
-    表 1：CRSFashion 中构建的基础与嵌套属性类别，支持下游检索、分类等任务。
-  </figcaption>
-</figure>
+<h3 id="3-多视角图像对齐建模"><a href="#3-多视角图像对齐建模" class="headerlink" title="3. 多视角图像对齐建模"></a>3. 多视角图像对齐建模</h3><p>我们整合多张视图，包括主图、细节图及搭配图（Outfit View），提升视觉理解的全面性。</p>
+<center><img src="assets/Figure3.png" width="90%"></center>  
+*<center>Figure 3: Statistics of image views per product in the CRSFashion dataset.</center>*
 
-<h3 id="2-属性表达模板设计"><a href="#2-属性表达模板设计" class="headerlink" title="2. 属性表达模板设计"></a>2. 属性表达模板设计</h3><p>为提升大语言模型对属性的理解能力，我们设计了标准化的提示模板，兼容指令微调（instruction tuning），从而稳定引导模型学习结构化属性表达。</p>
-
-<figure>
-  <img src="Listing1.png" alt="Listing1" style="display: block; margin: 0 auto; width: 90%;">
-  <figcaption style="text-align: center; line-height: 1.4; font-size: 0.92em;">
-    图示：属性融合指令模板设计示例。该格式有助于属性信息与语言模型有效结合。
-  </figcaption>
-</figure>
-
-<h3 id="3-多视图视觉对齐建模"><a href="#3-多视图视觉对齐建模" class="headerlink" title="3. 多视图视觉对齐建模"></a>3. 多视图视觉对齐建模</h3><p>我们构建了两类视觉视图以增强图像表达能力：</p>
-
+<h2 id="数据集构建流程"><a href="#数据集构建流程" class="headerlink" title="数据集构建流程"></a>数据集构建流程</h2><p>CRSFashion 从 SSENSE 等平台采集并清洗了 13 万余件商品数据，覆盖 52 万余张图像，提供图文对齐及搭配上下文信息。</p>
 <ul>
-  <li><strong>多角度商品图：</strong>包含正面、侧面、细节等视角，有助于捕捉商品纹理与版型特征。</li>
-  <li><strong>搭配图（Outfit View）：</strong>呈现多件商品的搭配效果，反映整体穿搭风格及兼容性。</li>
+<li>商品数量：132,159</li>
+<li>图像总数：528,534（含多视角与搭配视图）</li>
+<li>每个商品平均视图数：约 4 张</li>
+<li>类别：覆盖男&#x2F;女装全品类</li>
 </ul>
+<center><img src="assets/Figure2.png" width="90%"></center>  
+*<center>Figure 2: The overall data construction pipeline of CRSFashion.</center>*
 
-<figure>
-  <img src="Figure3.png" alt="Figure3" style="display: block; margin: 0 auto; width: 90%;">
-  <figcaption style="text-align: center; line-height: 1.4; font-size: 0.92em;">
-    图 2：CRSFashion 中视角分布统计。大多数商品包含 3–5 张图像，覆盖细粒度视觉特征。
-  </figcaption>
-</figure>
+<h2 id="三阶段属性提取方法"><a href="#三阶段属性提取方法" class="headerlink" title="三阶段属性提取方法"></a>三阶段属性提取方法</h2><h3 id="第一阶段：图文并行属性识别"><a href="#第一阶段：图文并行属性识别" class="headerlink" title="第一阶段：图文并行属性识别"></a>第一阶段：图文并行属性识别</h3><p>通过提示词引导模型从图像和文本分别抽取属性。</p>
+<center><img src="assets/Listing2-1.png" width="90%"></center>  
+*<center>Listing 2: Visual and textual prompt templates for attribute extraction.</center>*
 
-<h2 id="数据集构建流程"><a href="#数据集构建流程" class="headerlink" title="数据集构建流程"></a>数据集构建流程</h2><p>CRSFashion 采用三级协同标注流程构建，保障属性准确性与视觉多样性。</p>
+<h3 id="第二阶段：属性融合与标准化"><a href="#第二阶段：属性融合与标准化" class="headerlink" title="第二阶段：属性融合与标准化"></a>第二阶段：属性融合与标准化</h3><p>采用 GPT-4o 融合语义、规范格式，输出统一的结构化结果。</p>
+<center><img src="assets/Listing3.png" width="90%"></center>  
+*<center>Listing 3: Attribute fusion prompt template.</center>*
 
-<h3 id="Step-1：数据采集与清洗"><a href="#Step-1：数据采集与清洗" class="headerlink" title="Step 1：数据采集与清洗"></a>Step 1：数据采集与清洗</h3><ul>
-  <li><strong>来源平台：</strong>采集自 SSENSE 等高质量电商网站，覆盖多个风格品牌。</li>
-  <li><strong>初始规模：</strong>共计 141,092 件商品，清洗后保留 132,159 件。</li>
-  <li><strong>图像总数：</strong>包含 528,534 张图像，平均每件商品 4 张视图。</li>
-  <li><strong>字段拓展：</strong>特别加入“outfit”字段标记搭配视图，拓展搭配建模能力。</li>
-</ul>
+<h3 id="第三阶段：联合校验"><a href="#第三阶段：联合校验" class="headerlink" title="第三阶段：联合校验"></a>第三阶段：联合校验</h3><p>结合自动校验与人工复核，确保提取结果的准确性与一致性。</p>
+<h2 id="数据集分析与统计"><a href="#数据集分析与统计" class="headerlink" title="数据集分析与统计"></a>数据集分析与统计</h2><p>CRSFashion 属性多样、覆盖度高，优于同类数据集：</p>
+<center><img src="assets/Table2.png" width="90%"></center>  
+*<center>Table 2: Comparison with previous fashion datasets.</center>*
 
-<figure>
-  <img src="Figure2.png" alt="Figure2" style="display: block; margin: 0 auto; width: 90%;">
-  <figcaption style="text-align: center; line-height: 1.4; font-size: 0.92em;">
-    图 3：数据构建流程图，涵盖采集、结构化属性提取、图文对齐与验证步骤。
-  </figcaption>
-</figure>
+<center><img src="assets/Figure4.png" width="90%"></center>  
+*<center>Figure 4: Distribution of item categories in the CRSFashion dataset.</center>*
 
-<h3 id="Step-2：结构化属性三阶段提取"><a href="#Step-2：结构化属性三阶段提取" class="headerlink" title="Step 2：结构化属性三阶段提取"></a>Step 2：结构化属性三阶段提取</h3><h4 id="阶段一：图文并行属性提取"><a href="#阶段一：图文并行属性提取" class="headerlink" title="阶段一：图文并行属性提取"></a>阶段一：图文并行属性提取</h4><p>设计视觉与文本两路提示，引导模型从图像和描述中提取潜在属性信息，实现模态互补。</p>
+<p>我们还提供搭配图信息，辅助模型理解穿搭风格和兼容性。</p>
+<h2 id="数据样例展示"><a href="#数据样例展示" class="headerlink" title="数据样例展示"></a>数据样例展示</h2><p>展示多个商品的结构化属性、文本描述、多视图图像及 outfit 示例：</p>
+<center><img src="assets/Figure5.png" width="90%"></center>  
+*<center>Figure 5: Structured attribute examples and image views for selected items.</center>*
 
-<figure>
-  <img src="Listing2.png" alt="Listing2" style="display: block; margin: 0 auto; width: 90%;">
-  <figcaption style="text-align: center; line-height: 1.4; font-size: 0.92em;">
-    图示：用于结构化属性抽取的多模态提示模板示例。
-  </figcaption>
-</figure>
+<h2 id="实验与评估"><a href="#实验与评估" class="headerlink" title="实验与评估"></a>实验与评估</h2><h3 id="图文检索任务"><a href="#图文检索任务" class="headerlink" title="图文检索任务"></a>图文检索任务</h3><p>在图文检索任务上，结构化属性显著提升 Recall@K 结果。</p>
+<center><img src="assets/Table3-1.png" width="90%"></center>  
+*<center>Table 3: Retrieval performance comparison on CRSFashion.</center>*
 
-<h4 id="阶段二：语义融合与统一标准化"><a href="#阶段二：语义融合与统一标准化" class="headerlink" title="阶段二：语义融合与统一标准化"></a>阶段二：语义融合与统一标准化</h4><p>利用 GPT-4o 对初步提取的属性进行语义融合、去冗余、统一格式，确保属性一致性与高质量。</p>
-
-<figure>
-  <img src="Listing3.png" alt="Listing3" style="display: block; margin: 0 auto; width: 90%;">
-  <figcaption style="text-align: center; line-height: 1.4; font-size: 0.92em;">
-    图示：属性融合模板。输出格式兼容大模型下游训练使用。
-  </figcaption>
-</figure>
-
-<h4 id="阶段三：人工与自动校验联合标注"><a href="#阶段三：人工与自动校验联合标注" class="headerlink" title="阶段三：人工与自动校验联合标注"></a>阶段三：人工与自动校验联合标注</h4><p>采用人工复核与自动规则校验结合的方法，提升属性和图文对齐的准确性。</p>
-
-<h2 id="数据集关键指标"><a href="#数据集关键指标" class="headerlink" title="数据集关键指标"></a>数据集关键指标</h2><p>CRSFashion 在商品规模、视图数量和属性丰富度方面均优于现有时尚多模态数据集。</p>
-
-<figure>
-  <img src="Table2.png" alt="Table2" style="display: block; margin: 0 auto; width: 90%;">
-  <figcaption style="text-align: center; line-height: 1.4; font-size: 0.92em;">
-    表 2：与现有数据集对比，CRSFashion 在属性建模和视觉多样性方面具有领先优势。
-  </figcaption>
-</figure>
-
-<p>此外，CRSFashion 提供了丰富的类别分布，多数商品涵盖多个标签，提升模型的多类别泛化与检索能力。</p>
-
-<figure>
-  <img src="Figure4.png" alt="Figure4" style="display: block; margin: 0 auto; width: 90%;">
-  <figcaption style="text-align: center; line-height: 1.4; font-size: 0.92em;">
-    图 4：商品类别分布统计，反映标签多样性，有利于多标签学习任务。
-  </figcaption>
-</figure>
-
-<h2 id="数据示例解析"><a href="#数据示例解析" class="headerlink" title="数据示例解析"></a>数据示例解析</h2><p>以下展示三个典型商品案例，说明结构化属性、图像信息和搭配上下文如何共同增强模型理解。</p>
-
-<figure>
-  <img src="Figure5.png" alt="Figure5" style="display: block; margin: 0 auto; width: 90%;">
-  <figcaption style="text-align: center; line-height: 1.4; font-size: 0.92em;">
-    图 5：CRSFashion 中三个样例的属性与多视图展示，体现图文协同建模能力。
-  </figcaption>
-</figure>
-
-<h2 id="实验效果评估"><a href="#实验效果评估" class="headerlink" title="实验效果评估"></a>实验效果评估</h2><h3 id="1-跨模态检索任务"><a href="#1-跨模态检索任务" class="headerlink" title="1. 跨模态检索任务"></a>1. 跨模态检索任务</h3><p>在图文检索任务中，结构化属性有效提升了文本-图像和图像-文本匹配准确率，显著优于基线模型。</p>
-
-<figure>
-  <img src="Table3-1.png" alt="Table3" style="display: block; margin: 0 auto; width: 90%;">
-  <figcaption style="text-align: center; line-height: 1.4; font-size: 0.92em;">
-    表 3：在完整测试集上，各方法在跨模态检索任务中的表现对比。
-  </figcaption>
-</figure>
-
-<h3 id="2-搭配兼容性预测任务"><a href="#2-搭配兼容性预测任务" class="headerlink" title="2. 搭配兼容性预测任务"></a>2. 搭配兼容性预测任务</h3><p>结构化语义和搭配视图的结合，有效提升模型对整体搭配风格的理解与推荐效果。</p>
-
-<figure>
-  <img src="Table6.png" alt="Table6" style="display: block; margin: 0 auto; width: 90%;">
-  <figcaption style="text-align: center; line-height: 1.4; font-size: 0.92em;">
-    表 4：在 CRSFashion-outfit 数据集上的搭配兼容性预测结果。
-  </figcaption>
-</figure>
+<h3 id="搭配预测任务"><a href="#搭配预测任务" class="headerlink" title="搭配预测任务"></a>搭配预测任务</h3><p>在搭配兼容性预测中，属性与搭配图共同提高兼容性判断准确率。</p>
+<center><img src="assets/Table6.png" width="90%"></center>  
+*<center>Table 6: Compatibility prediction performance on outfit-view subset.</center>*
 
       
     </div>
