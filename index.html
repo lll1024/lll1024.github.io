@@ -201,7 +201,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-06-14 11:44:08" itemprop="dateModified" datetime="2025-06-14T11:44:08+08:00">2025-06-14</time>
+      <time title="Modified: 2025-06-16 16:24:38" itemprop="dateModified" datetime="2025-06-16T16:24:38+08:00">2025-06-16</time>
     </span>
 
   
@@ -264,11 +264,10 @@
 </ul>
 <p>我们采用标准检索指标 R@k 进行评估，即目标是否出现在前 k 个检索结果中。实验设置上，我们使用 FashionSAP 的公开代码与评估流程，并将预训练数据替换为 CRSFashion 数据集，从而在 FashionGen 测试集上进行公平对比，相关结果如图所示：</p>
 <p><img src="/2025/06/12/CRSFashion/Table3.png" alt="Table3"><br><em><center style="line-height:1.3;font-size:0.92em;padding:0 10%;">Retrieval performance comparison on CRSFashion.</center></em></p>
-<p>在实验中我们构造了三种不同数据配置：</p>
+<p>在实验中我们构造了两种不同数据配置：</p>
 <ul>
 <li>CRSFashion_textual：仅使用产品原始文本描述作为语言模态输入；</li>
 <li>CRSFashion_structured：在文本基础上引入结构化属性信息；</li>
-<li>CRSFashion_views：融合所有图像视角（包括主图、细节图和搭配图），用于捕捉更细粒度的视觉特征。</li>
 </ul>
 <p>可以看出 CRSFashion 在两个检索任务中均取得了显著提升。即使仅使用原始文本描述，相较于已有方法也能带来接近 3% 的 R@k 提升；进一步加入结构化属性与多视图图像后，性能提升更为明显，验证了我们在结构化表示与多视角建模方面的设计优势。</p>
 <h3 id="类别识别任务"><a href="#类别识别任务" class="headerlink" title="类别识别任务"></a>类别识别任务</h3><p>类别识别任务旨在根据一件服装产品的图像和文本描述，识别其所属的具体服装品类。该任务更关注模型对于多模态输入中类别信息的理解能力。<br>我们从完整的 CRSFashion 数据集中构建了用于该任务的专用子集。为了与现有工作保持一致并保证公平性，我们移除了与生活环境相关的产品，仅保留真实穿着类服饰样本。最终划分得到训练集 96800 条、验证集 12109 条和测试集 12188 条。<br>为全面评估 CRSFashion 方法在该任务中的有效性，我们在两类模型上进行了实验：</p>
