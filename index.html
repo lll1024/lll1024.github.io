@@ -134,7 +134,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">1</span>
+          <span class="site-state-item-count">2</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -156,6 +156,109 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jarviliu.github.io/2025/06/26/Fashion/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="L">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Magic House">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | Magic House">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/06/26/Fashion/" class="post-title-link" itemprop="url">Fashion++</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2025-06-26 10:01:14 / Modified: 10:09:06" itemprop="dateCreated datePublished" datetime="2025-06-26T10:01:14+08:00">2025-06-26</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Fashion-Minimal-Edits-for-Outfit-Improvement"><a href="#Fashion-Minimal-Edits-for-Outfit-Improvement" class="headerlink" title="Fashion++: Minimal Edits for Outfit Improvement"></a>Fashion++: Minimal Edits for Outfit Improvement</h1><p>在日常穿搭中，用户常常希望在不彻底更换整套服装的前提下，通过轻微调整来提升整体造型的时尚感。Fashion++ 提出了一种图像生成方法，能够在已有穿搭基础上生成最小化修改建议，实现风格优化。</p>
+<h2 id="一、研究背景与动机"><a href="#一、研究背景与动机" class="headerlink" title="一、研究背景与动机"></a>一、研究背景与动机</h2><p>传统时尚推荐系统侧重于搭配单品或生成全新搭配，但这类方法忽略了用户已有衣物的利用价值。相比“从头开始”，更实用的方式是基于现有穿搭，进行局部优化，例如：</p>
+<ul>
+<li>更换颜色协调的下装；</li>
+<li>卷起袖子或衣角；</li>
+<li>替换某一件单品。</li>
+</ul>
+<p>这类轻量化调整可以带来显著的风格改善，但缺乏自动化工具进行推荐与可视化。Fashion++ 正是为了解决这一问题提出的。</p>
+<h2 id="二、方法概述"><a href="#二、方法概述" class="headerlink" title="二、方法概述"></a>二、方法概述</h2><p>Fashion++ 设计了一条数据驱动的图像生成管线，通过逐步优化搭配得分，实现最小穿搭编辑。该方法的核心步骤如下：</p>
+<h3 id="1-穿搭编码与分解"><a href="#1-穿搭编码与分解" class="headerlink" title="1. 穿搭编码与分解"></a>1. 穿搭编码与分解</h3><p>每套穿搭由若干服装单品组成，每件服装会被编码成特征向量。为了更精细地控制修改类型，编码被进一步分解为：</p>
+<ul>
+<li>纹理（颜色、图案等）分量</li>
+<li>结构（轮廓、剪裁、穿法）分量</li>
+</ul>
+<p>这种因式分解使得系统可以独立地修改颜色或版型，例如“仅调整衬衫颜色”或“改变衣领形状”。</p>
+<h3 id="2-风格优化与编辑轨迹"><a href="#2-风格优化与编辑轨迹" class="headerlink" title="2. 风格优化与编辑轨迹"></a>2. 风格优化与编辑轨迹</h3><p>通过构建一个判别式的时尚评分模型，Fashion++ 能够评估穿搭的整体时尚度。系统通过“激活最大化”策略，沿着提升评分的方向更新编码，形成从原始穿搭到优化后穿搭的连续编辑轨迹。</p>
+<h3 id="3-输出方式"><a href="#3-输出方式" class="headerlink" title="3. 输出方式"></a>3. 输出方式</h3><p>优化完成后，系统输出两种结果形式：</p>
+<ol>
+<li>推荐单品：从服装库存中检索最能实现修改建议的服装；</li>
+<li>可视化渲染：根据修改后的编码，生成用户原始人物形象下的新穿搭图像。</li>
+</ol>
+<p>两种结果均提供可执行的搭配建议，改动小但具有实际风格提升效果。</p>
+<h2 id="三、实验验证"><a href="#三、实验验证" class="headerlink" title="三、实验验证"></a>三、实验验证</h2><p>研究在 Chictopia 数据集上进行了验证。通过自动化评估指标与用户调查双重手段，结果表明：</p>
+<ul>
+<li>所生成的最小化穿搭编辑在风格提升方面优于多个基线方法；</li>
+<li>用户普遍认为编辑后的穿搭更具时尚感；</li>
+<li>系统具备良好的可控性与实用性。</li>
+</ul>
+<h2 id="四、总结"><a href="#四、总结" class="headerlink" title="四、总结"></a>四、总结</h2><p>Fashion++ 提出了一种新颖的穿搭优化框架，能够在不改变整体服装组合的前提下，实现基于图像的风格编辑。其方法具备以下特点：</p>
+<ul>
+<li>聚焦“最小化修改”而非完整重搭；</li>
+<li>可精细控制修改位置与类型；</li>
+<li>结合图像生成与推荐，适用于实际穿搭建议与设计辅助。</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
